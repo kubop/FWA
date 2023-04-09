@@ -26,12 +26,12 @@
                     <td>@user.LastName</td>
                     <td>@user.Login</td>
                     @{
-                        if (user.AddressId is not null)
+                        if (user.aAddressId is not null)
                         {
                             <td>@user.Street @user.Number, @user.ZipCode @user.City</td>
                         } else
                         {
-                            <td>null</td>
+                            <td>@user.uAddressId</td>
                         }
                     }
                     <td>

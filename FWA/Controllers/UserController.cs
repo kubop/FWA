@@ -11,11 +11,9 @@ namespace FWAweb.Controllers
         {
             _userService = userService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            // int id = 2;
             var users = _userService.ListForGrid();
-
             return View(users);
         }
     }
