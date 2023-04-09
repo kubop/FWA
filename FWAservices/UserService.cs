@@ -31,4 +31,9 @@ public class UserService
     {
         return _business.Get<UserViewBusiness>().ListForGrid();
     }
+
+    public void SoftDelete(User user, IGenericScope scope = null)
+    {
+        _business.Get<UserBusiness>().Delete(user);
+    } 
 }

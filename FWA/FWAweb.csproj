@@ -11,4 +11,10 @@
     <ProjectReference Include="..\FWAservices\FWAservices.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Toolkit.Common">
+      <HintPath>bin\Debug\net7.0\Toolkit.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

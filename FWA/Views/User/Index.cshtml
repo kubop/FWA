@@ -34,9 +34,11 @@
                             <td>@user.uAddressId</td>
                         }
                     }
-                    <td>
-                        <a asp-asp-controller="User" asp-action="Edit" asp-route-id="@user.UserId">Edit</a>
-                        <a asp-asp-controller="User" asp-action="Delete" asp-route-id="@user.UserId">Delete</a>
+                    <td style="display:flex;margin:10px;align-items: center;">
+                        <a asp-controller="User" asp-action="Edit" asp-route-id="@user.UserId"><i class="material-icons">edit</i></a>
+                        <form asp-controller="User" asp-action="Delete" asp-route-id="@user.UserId" method="post">
+                            <button type="submit" style="display:contents;"><i class="material-icons">delete</i></button>
+                        </form>
                     </td>
                 </tr>
             }
