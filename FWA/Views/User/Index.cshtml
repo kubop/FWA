@@ -6,7 +6,7 @@
 
 <div class="text-center">
     <h1 class="display-4">Users</h1>
-    <table>
+    <table style="width: 100%;border: 1px solid black;border-collapse: collapse;">
         <thead>
             <tr>
                 <th>
@@ -34,9 +34,9 @@
                             <td>@user.uAddressId</td>
                         }
                     }
-                    <td style="display:flex;margin:10px;align-items: center;">
-                        <a asp-controller="User" asp-action="Edit" asp-route-id="@user.UserId"><i class="material-icons">edit</i></a>
-                        <form asp-controller="User" asp-action="Delete" asp-route-id="@user.UserId" method="post">
+                    <td align-items: center;justify-content: center;">
+                        <a asp-controller="User" asp-action="Edit" asp-route-id="@user.UserId" style="display:inline-block"><i class="material-icons">edit</i></a>
+                        <form asp-controller="User" asp-action="Delete" asp-route-id="@user.UserId" method="post" style="display:inline-block">
                             <button type="submit" style="display:contents;"><i class="material-icons">delete</i></button>
                         </form>
                     </td>

@@ -1,0 +1,48 @@
+﻿@model FWAweb.Controllers.UserController.UserAddressesModel //FWAcore.Model.UserView
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="text-center">
+    <h1 class="display-4">User details</h1>
+    <div>
+        <label>@Html.DisplayNameFor(model => model.User.FirstName):</label>
+        <input type="text" value="@Model.User.FirstName" />
+    </div>
+    <div>
+        <label>@Html.DisplayNameFor(model => model.User.LastName):</label>
+        <input type="text" value="@Model.User.LastName" />
+    </div>
+    <div>
+        <label>@Html.DisplayNameFor(model => model.User.Login):</label>
+        <input type="text" value="@Model.User.Login" />
+    </div>
+    <div>
+        <label>@Html.DisplayNameFor(model => model.User.Password):</label>
+        <input type="text" value="@Model.User.Password" />
+    </div>
+
+    <div>
+        <label>Address:</label>
+
+        <select name="addresses" id="addresses">
+            @{
+                foreach (var Address in Model.Addresses)
+                {
+                    if(Address.AddressId == Model.User.AddressId)
+                    {
+                        <option selected value="@Address.AddressId">@Address.Street @Address.Number, @Address.ZipCode @Address.City</option>
+                    } else
+                    {
+                        <option value="@Address.AddressId">@Address.Street @Address.Number, @Address.ZipCode @Address.City</option>
+                    }
+                }
+                if (!Model.Addresses.Any(a => a.AddressId == Model.User.AddressId))
+                {
+                    <option selected value="@Model.User.AddressId">@Model.User.AddressId</option>
+                } 
+            }
+        </select>
+    </div>
+</div>

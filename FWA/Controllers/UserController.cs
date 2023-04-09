@@ -7,15 +7,42 @@ namespace FWAweb.Controllers
     public class UserController : Controller
     {
         private readonly UserService _userService;
+        private readonly AddressService _addressService;
 
-        public UserController(UserService userService) 
+        public UserController(UserService userService, AddressService addressService) 
         {
             _userService = userService;
+            _addressService = addressService;
         }
         public async Task<IActionResult> Index()
         {
             var users = _userService.ListForGrid();
             return View(users);
+        }
+
+        public class UserAddressesModel
+        {
+            public User User { get; set; }
+            public IList<Address> Addresses { get; set; } = new List<Address>();
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var user = _userService.GetObjectById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var addressList = _addressService.GetAllAddresses();
+
+            var model = new UserAddressesModel
+            {
+                User = user,
+                Addresses = addressList
+            };
+
+            return View(model);
         }
 
         // TODO: Prerobiť na [HttpDelete] a na FE poslať custom DELETE request

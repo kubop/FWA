@@ -9,5 +9,6 @@ public class Startup
         FWAdata.Startup.ConfigureServices(services);
 
         services.AddScoped<UserService>();
+        services.AddScoped<AddressService>();
     }
 }
