@@ -49,7 +49,8 @@ namespace FWAdata.DbAccess
 			entity.Property(x => x.LastName).HasColumnName("sLastName").IsRequired();
 			entity.Property(x => x.Login).HasColumnName("sLogin").IsRequired();
 			entity.Property(x => x.Password).HasColumnName("sPassword").IsRequired();
-			entity.Property(x => x.AddressId).HasColumnName("nAddressId");
+			entity.Property(x => x.uAddressId).HasColumnName("uAddressId");
+			entity.Property(x => x.aAddressId).HasColumnName("aAddressId");
 			entity.Property(x => x.Street).HasColumnName("sStreet");
 			entity.Property(x => x.Number).HasColumnName("nNumber");
 			entity.Property(x => x.City).HasColumnName("sCity");

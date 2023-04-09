@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -17,7 +16,7 @@ namespace FWAcore.Model
 		}
 
 		private string m_FirstName = "";
-        public string FirstName
+		public string FirstName
 		{
 			get { return m_FirstName; }
 			set { SetDbField(ref m_FirstName, value, nameof(this.FirstName)); }
@@ -44,11 +43,18 @@ namespace FWAcore.Model
 			set { SetDbField(ref m_Password, value, nameof(this.Password)); }
 		}
 
-		private int? m_AddressId;
-		public int? AddressId
+		private int? m_uAddressId;
+		public int? uAddressId
 		{
-			get { return m_AddressId; }
-			set { SetDbField(ref m_AddressId, value, nameof(this.AddressId)); }
+			get { return m_uAddressId; }
+			set { SetDbField(ref m_uAddressId, value, nameof(this.uAddressId)); }
+		}
+
+		private int? m_aAddressId;
+		public int? aAddressId
+		{
+			get { return m_aAddressId; }
+			set { SetDbField(ref m_aAddressId, value, nameof(this.aAddressId)); }
 		}
 
 		private string m_Street = "";
