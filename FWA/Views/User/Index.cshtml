@@ -1,0 +1,45 @@
+﻿@model List<FWAcore.Model.UserView>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Users</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].FirstName)
+                </th>
+                <th>@Html.DisplayNameFor(model => model[0].LastName)</th>
+                <th>@Html.DisplayNameFor(model => model[0].Login)</th>
+                <th style="text-align:center;">Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.Login</td>
+                    @{
+                        if (user.AddressId is not null)
+                        {
+                            <td>@user.Street @user.Number, @user.ZipCode @user.City</td>
+                        } else
+                        {
+                            <td>null</td>
+                        }
+                    }
+                    <td>
+                        <a asp-asp-controller="User" asp-action="Edit" asp-route-id="@user.UserId">Edit</a>
+                        <a asp-asp-controller="User" asp-action="Delete" asp-route-id="@user.UserId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
