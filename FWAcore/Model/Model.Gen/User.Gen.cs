@@ -26,21 +26,24 @@ namespace FWAcore.Model
 		}
 
 		private string m_LastName = "";
-		public string LastName
+        [Required, StringLength(255)]
+        public string LastName
 		{
 			get { return m_LastName; }
 			set { SetDbField(ref m_LastName, value, nameof(this.LastName)); }
 		}
 
 		private string m_Login = "";
-		public string Login
+        [Required, StringLength(255)]
+        public string Login
 		{
 			get { return m_Login; }
 			set { SetDbField(ref m_Login, value, nameof(this.Login)); }
 		}
 
 		private string m_Password = "";
-		public string Password
+        [Required, StringLength(255)]
+        public string Password
 		{
 			get { return m_Password; }
 			set { SetDbField(ref m_Password, value, nameof(this.Password)); }

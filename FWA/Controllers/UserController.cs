@@ -1,6 +1,7 @@
 ﻿using FWAservices;
 using Microsoft.AspNetCore.Mvc;
 using FWAcore.Model;
+using Microsoft.IdentityModel.Tokens;
 
 namespace FWAweb.Controllers
 {
@@ -47,11 +48,19 @@ namespace FWAweb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,FirstName,LastName,Login,Password,AddressId")] User user)
+        public async Task<IActionResult> Edit(int id, string password, [Bind("UserId,FirstName,LastName,Login,AddressId")] User user)
         {
             if (id != user.UserId)
             {
                 return NotFound();
+            }
+
+            if (!password.IsNullOrEmpty())
+            {
+                user.Password = password;
+            } else
+            {
+                // user.Password = oldPassword;
             }
 
             if (ModelState.IsValid)
