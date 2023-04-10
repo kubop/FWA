@@ -4,74 +4,55 @@
     ViewData["Title"] = "Details";
 }
 
-<div class="text-center">
-    <h1 class="display-4">User details</h1>
-    <form asp-action="Edit">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="User.UserId" />
-        <div class="form-group">
-            <label asp-for="User.FirstName" class="control-label"></label>
-            <input asp-for="User.FirstName" class="form-control"/>
-            <span asp-validation-for="User.FirstName" class="text-danger"></span>
-        </div>
-        <div>
-            <label asp-for ="User.LastName" class="control-label"></label>
-            <input asp-for="User.LastName" class="form-control" />
-            <span asp-validation-for="User.LastName" class="text-danger"></span>
-        </div>
-        <div>
-            <label asp-for="User.Login" class="control-label"></label>
-            <input asp-for="User.Login" class="form-control" />
-            <span asp-validation-for="User.Login" class="text-danger"></span>
-        </div>
-        <div>
-            <label asp-for="User.Password" class="control-label"></label>
-            <input asp-for="User.Password" class="form-control" />
-            <span asp-validation-for="User.Password" class="text-danger"></span>
-        </div>
+<div class="row">
+    <div class="col-md-4">
+        <h1 class="display-4">User details</h1>
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="User.UserId" />
+            <div class="form-group">
+                <label asp-for="User.FirstName" class="control-label"></label>
+                <input asp-for="User.FirstName" class="form-control"/>
+                <span asp-validation-for="User.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for ="User.LastName" class="control-label"></label>
+                <input asp-for="User.LastName" class="form-control" />
+                <span asp-validation-for="User.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Login" class="control-label"></label>
+                <input asp-for="User.Login" class="form-control" />
+                <span asp-validation-for="User.Login" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Password" class="control-label"></label>
+                <input asp-for="User.Password" type="password" class="form-control" />
+                <span asp-validation-for="User.Password" class="text-danger"></span>
+            </div>
 
-        <div>
-            <label>Address:</label>
-            <select 
-                asp-for="User.AddressId"
-                asp-items="@(Model.Addresses.Select(a => new SelectListItem {
-                    Value = a.AddressId.ToString(),
-                    Text = $"{a.Street}",
-                    Selected = a.AddressId == Model.User.AddressId 
-                }))"
-            >
-                @{
-                    if (!Model.Addresses.Any(a => a.AddressId == Model.User.AddressId)) {
-                        <option value="@Model.User.AddressId">@Model.User.AddressId</option>
-                    }
-                }
-            </select>
-            @{/*
-            <select name="addresses" id="addresses">
-                @{
-                    foreach (var Address in Model.Addresses)
-                    {
-                        if (Address.AddressId == Model.User.AddressId)
-                        {
-                            <option asp-for="User.UserId" selected value="@Address.AddressId">@Address.Street @Address.Number, @Address.ZipCode @Address.City</option>
-                        }
-                        else
-                        {
-                            <option asp-for="User.UserId" value="@Address.AddressId">@Address.Street @Address.Number, @Address.ZipCode @Address.City</option>
+            <div class="form-group">
+                <label>Address:</label>
+                <select 
+                    asp-for="User.AddressId"
+                    asp-items="@(Model.Addresses.Select(a => new SelectListItem {
+                        Value = a.AddressId.ToString(),
+                        Text = $"{a.Street} {a.Number}, {a.ZipCode} {a.City}",
+                        Selected = a.AddressId == Model.User.AddressId 
+                    }))"
+                >
+                    @{
+                        if (!Model.Addresses.Any(a => a.AddressId == Model.User.AddressId)) {
+                            <option value="@Model.User.AddressId">@Model.User.AddressId</option>
                         }
                     }
-                    if (!Model.Addresses.Any(a => a.AddressId == Model.User.AddressId))
-                    {
-                        <option asp-for="User.UserId" selected value="@Model.User.AddressId">@Model.User.AddressId</option>
-                    }
-                }
-            </select>
-            */}
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Save" class="btn btn-primary" />
-        </div>
-    </form>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
 </div>
 
 @section Scripts {

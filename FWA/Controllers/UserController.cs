@@ -59,7 +59,7 @@ namespace FWAweb.Controllers
                 // Budeme savovať
             }
 
-            return View(user);
+            return RedirectToAction("Edit", id);
         }
 
         // TODO: Prerobiť na [HttpDelete] a na FE poslať custom DELETE request
