@@ -45,6 +45,23 @@ namespace FWAweb.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("UserId,FirstName,LastName,Login,Password,AddressId")] User user)
+        {
+            if (id != user.UserId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                // Budeme savovať
+            }
+
+            return View(user);
+        }
+
         // TODO: Prerobiť na [HttpDelete] a na FE poslať custom DELETE request
         [HttpPost]
         public async Task<IActionResult> Delete(int id) 

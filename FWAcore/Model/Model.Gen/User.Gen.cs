@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ namespace FWAcore.Model
 		}
 
 		private string m_FirstName = "";
+		[Required, StringLength(255)]
 		public string FirstName
 		{
 			get { return m_FirstName; }
