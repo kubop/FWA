@@ -23,4 +23,4 @@
 
 8. manazment nad address tabulkou
 	- ✅ grid podobne, + zobrazit pocet userov ktory maju priradenu danu adresu
-	- ❌ edit podobne
+	- ✅ edit podobne
