@@ -48,24 +48,33 @@ namespace FWAweb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, string password, [Bind("UserId,FirstName,LastName,Login,AddressId")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("UserId,FirstName,LastName,Login,NewPassword,AddressId")] User user)
         {
             if (id != user.UserId)
             {
                 return NotFound();
             }
 
-            if (!password.IsNullOrEmpty())
+            var oldUser = _userService.GetObjectById(id);
+            if (oldUser == null)
             {
-                user.Password = password;
+                return NotFound();
+            }
+
+            if (!user.NewPassword.IsNullOrEmpty())
+            {
+                user.Password = user.NewPassword!;
             } else
             {
-                // user.Password = oldPassword;
+                user.Password = oldUser.Password;
             }
+
+            ModelState.ClearValidationState(nameof(user));
+            TryValidateModel(user, nameof(user));
 
             if (ModelState.IsValid)
             {
-                // Budeme savovať
+                _userService.Update(user);
             }
 
             return RedirectToAction("Edit", id);

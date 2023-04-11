@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Toolkit.Common" Version="0.32.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FWAcore\FWAcore.csproj" />
     <ProjectReference Include="..\FWAservices\FWAservices.csproj" />
   </ItemGroup>

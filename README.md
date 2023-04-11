@@ -17,7 +17,7 @@
 		- ✅ moznost mazat
 		- ❌ moznost zoradit podla vsetkych fieldov asc/desc (toto nechaj na koniec)
 
-	- ❌ edit view kde sa budu dat menit vsetky hodnoty
+	- ✅ edit view kde sa budu dat menit vsetky hodnoty
 		- ✅ adresa ako combo (ak bude mat user nasetovanu neexistujucu adresu, malo by sa jej id korektne zobrazit v combe)
 		- ✅ zvaz co das povinne a co nie, pripadne dalsie validacie
 

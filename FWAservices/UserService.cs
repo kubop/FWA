@@ -35,5 +35,10 @@ public class UserService
     public void SoftDelete(User user, IGenericScope scope = null)
     {
         _business.Get<UserBusiness>().Delete(user);
-    } 
+    }
+
+    public void Update(User obj, IGenericScope scope = null)
+    {
+        _business.Get<UserBusiness>().Update(obj);
+    }
 }

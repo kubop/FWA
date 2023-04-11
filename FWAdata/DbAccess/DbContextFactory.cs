@@ -15,7 +15,7 @@ public class DbContextFactory
 
     public DbContext CreateInstance()
     {
-        var cs = _configuration?.GetConnectionString("FWA_HOME_DB");
+        var cs = _configuration?.GetConnectionString("FWA");
         if (cs is null) throw new Exception($"No connection string defined");
         return new DbContext(cs, UserId);
     }
