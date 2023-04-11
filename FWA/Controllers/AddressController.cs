@@ -2,6 +2,7 @@
 using FWAservices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static FWAweb.Controllers.UserController;
 
 namespace FWAweb.Controllers
 {
@@ -19,6 +20,17 @@ namespace FWAweb.Controllers
         {
             var addressList = _addressService.GetAllAddressesWithCount();
             return View(addressList);
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var address = _addressService.GetObjectById(id);
+            if (address == null)
+            {
+                return NotFound();
+            }
+
+            return View(address);
         }
 
         // TODO: Prerobiť na [HttpDelete] a na FE poslať custom DELETE request
