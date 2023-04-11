@@ -2,6 +2,7 @@
 using FWAservices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using static FWAweb.Controllers.UserController;
 
 namespace FWAweb.Controllers
@@ -31,6 +32,29 @@ namespace FWAweb.Controllers
             }
 
             return View(address);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("AddressId,Street,Number,ZipCode,City")] Address address)
+        {
+            if (id != address.AddressId)
+            {
+                return NotFound();
+            }
+
+            var oldAddress = _addressService.GetObjectById(id);
+            if (oldAddress == null)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _addressService.Update(address);
+            }
+
+            return RedirectToAction("Edit", id);
         }
 
         // TODO: Prerobiť na [HttpDelete] a na FE poslať custom DELETE request

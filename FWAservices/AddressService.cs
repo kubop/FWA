@@ -36,5 +36,10 @@ namespace FWAservices
         {
             _business.Get<AddressBusiness>().Delete(address);
         }
+
+        public void Update(Address obj, IGenericScope scope = null)
+        {
+            _business.Get<AddressBusiness>().Update(obj);
+        }
     }
 }
