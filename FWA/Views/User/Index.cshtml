@@ -6,7 +6,7 @@
 
 <div class="text-center">
     <h1 class="display-4">Users</h1>
-    <table style="width: 100%;border: 1px solid black;border-collapse: collapse;">
+    <table id="userTable" style="width: 100%;border: 1px solid black;border-collapse: collapse;">
         <thead>
             <tr>
                 <th>
@@ -45,3 +45,9 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#userTable').DataTable();
+    });
+</script>

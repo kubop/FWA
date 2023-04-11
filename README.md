@@ -15,7 +15,7 @@
 7. manazment nad user tabulkou
 	- ✅ grid view kde budu zobrazene vsetky recordy (adresu zobrazit vo formate "street number, zip city", ak bude mat nejaky user adresu ktora neexistuje, namiesto popisu zobrazit jej id), 
 		- ✅ moznost mazat
-		- ❌ moznost zoradit podla vsetkych fieldov asc/desc (toto nechaj na koniec)
+		- ✅ moznost zoradit podla vsetkych fieldov asc/desc (toto nechaj na koniec)
 
 	- ✅ edit view kde sa budu dat menit vsetky hodnoty
 		- ✅ adresa ako combo (ak bude mat user nasetovanu neexistujucu adresu, malo by sa jej id korektne zobrazit v combe)
