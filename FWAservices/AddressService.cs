@@ -17,6 +17,11 @@ namespace FWAservices
             _business = business;
         }
 
+        public Address GetObjectById(int addressId, IGenericScope scope = null)
+        {
+            return _business.Get<AddressBusiness>().GetObject(addressId, scope as IScope);
+        }
+
         public IList<Address> GetAllAddresses(IGenericScope scope = null)
         {
             return _business.Get<AddressBusiness>().GetAllAddresses();
@@ -25,6 +30,11 @@ namespace FWAservices
         public IList<Address> GetAllAddressesWithCount(IGenericScope scope = null)
         {
             return _business.Get<AddressBusiness>().GetAllAddressesWithCount();
+        }
+
+        public void SoftDelete(Address address, IGenericScope scope = null)
+        {
+            _business.Get<AddressBusiness>().Delete(address);
         }
     }
 }
