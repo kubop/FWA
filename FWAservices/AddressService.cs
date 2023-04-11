@@ -21,5 +21,10 @@ namespace FWAservices
         {
             return _business.Get<AddressBusiness>().GetAllAddresses();
         }
+
+        public IList<Address> GetAllAddressesWithCount(IGenericScope scope = null)
+        {
+            return _business.Get<AddressBusiness>().GetAllAddressesWithCount();
+        }
     }
 }

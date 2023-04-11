@@ -22,5 +22,5 @@
 		- ✅ zvaz co das povinne a co nie, pripadne dalsie validacie
 
 8. manazment nad address tabulkou
-	- ❌ grid podobne, + zobrazit pocet userov ktory maju priradenu danu adresu
+	- ✅ grid podobne, + zobrazit pocet userov ktory maju priradenu danu adresu
 	- ❌ edit podobne

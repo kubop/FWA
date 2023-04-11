@@ -1,0 +1,41 @@
+﻿@model List<FWAcore.Model.Address>
+
+@{
+    ViewData["Title"] = "Addresses";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Addresses</h1>
+    <table style="width: 100%;border: 1px solid black;border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Street)
+                </th>
+                <th>@Html.DisplayNameFor(model => model[0].Number)</th>
+                <th>@Html.DisplayNameFor(model => model[0].ZipCode)</th>
+                <th>@Html.DisplayNameFor(model => model[0].City)</th>
+                <th>@Html.DisplayNameFor(model => model[0].CountUsers)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var address in Model)
+            {
+                <tr>
+                    <td>@address.Street</td>
+                    <td>@address.Number</td>
+                    <td>@address.ZipCode</td>
+                    <td>@address.City</td>
+                    <td>@address.CountUsers</td>
+                    <td align-items: center;justify-content: center;">
+                        <a asp-controller="Address" asp-action="Edit" asp-route-id="@address.AddressId" style="display:inline-block"><i class="material-icons">edit</i></a>
+                        <form asp-controller="Address" asp-action="Delete" asp-route-id="@address.AddressId" method="post" style="display:inline-block">
+                            <button type="submit" style="display:contents;"><i class="material-icons">delete</i></button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
