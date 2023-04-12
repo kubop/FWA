@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,33 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.LoginPath = "/Auth/Login";
         options.LogoutPath = "/Auth/Logout";
         options.AccessDeniedPath = "/Auth/AccessDenied";
+    })
+    .AddMicrosoftAccount(microsoftOptions =>
+    {
+        microsoftOptions.ClientId = builder.Configuration["Authentication:Microsoft:ClientId"] ?? "";
+        microsoftOptions.ClientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"] ?? "";
+        microsoftOptions.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+        //microsoftOptions.Events = new Microsoft.AspNetCore.Authentication.OAuth.OAuthEvents
+        //{
+        //    OnTicketReceived = ctx =>
+        //    {
+        //        var username = ctx.Principal.FindFirstValue(ClaimTypes.NameIdentifier);
+        //        if (string.IsNullOrWhiteSpace(username))
+        //        {
+        //            ctx.HandleResponse();
+        //            ctx.Response.Redirect("/");
+        //            return Task.CompletedTask;
+        //        }
+
+        //        //if (!UserExists(username))
+        //        //{
+        //        //    CreateUser(username);
+        //        //}
+
+        //        return Task.CompletedTask;
+        //    }
+        //};
     });
 
 // Add services to the container.

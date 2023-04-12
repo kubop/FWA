@@ -2,6 +2,7 @@
 using FWAweb.Auth;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -18,7 +19,24 @@ namespace FWAweb.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Login() { return View("Index"); }
+        public IActionResult Login() 
+        { 
+            if (User?.Identity?.IsAuthenticated == true)
+            {
+                return RedirectToAction("Index", "User");
+            }
+            return View("Index"); 
+        }
+
+        [AllowAnonymous]
+        public IActionResult LoginMicrosoft()
+        {
+            if (User?.Identity?.IsAuthenticated == true)
+            {
+                return RedirectToAction("Index", "User");
+            }
+            return Challenge(new AuthenticationProperties { RedirectUri = "/" }, MicrosoftAccountDefaults.AuthenticationScheme);
+        }
 
         [HttpPost]
         [AllowAnonymous]
@@ -55,7 +73,7 @@ namespace FWAweb.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return View("Index");
+            return RedirectToAction("Index", "User");
         }
     }
 }
