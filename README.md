@@ -10,7 +10,7 @@
 
 5. ✅ pouzit generator a yamo
 
-6. ❌ spravit login/logout (pripadne pridat login aj cez google/microsoft - toto nechaj na koniec)
+6. ✅ spravit login/logout (pripadne pridat login aj cez google/microsoft - toto nechaj na koniec)
 
 7. manazment nad user tabulkou
 	- ✅ grid view kde budu zobrazene vsetky recordy (adresu zobrazit vo formate "street number, zip city", ak bude mat nejaky user adresu ktora neexistuje, namiesto popisu zobrazit jej id), 

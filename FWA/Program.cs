@@ -15,30 +15,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     })
     .AddMicrosoftAccount(microsoftOptions =>
     {
-        microsoftOptions.ClientId = builder.Configuration["Authentication:Microsoft:ClientId"] ?? "";
-        microsoftOptions.ClientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"] ?? "";
+        microsoftOptions.ClientId = builder.Configuration["Authentication:Microsoft:ClientId"] ?? throw new Exception("ClientId not in configuration");
+        microsoftOptions.ClientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"] ?? throw new Exception("ClientSecret not in configuration");
         microsoftOptions.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-
-        //microsoftOptions.Events = new Microsoft.AspNetCore.Authentication.OAuth.OAuthEvents
-        //{
-        //    OnTicketReceived = ctx =>
-        //    {
-        //        var username = ctx.Principal.FindFirstValue(ClaimTypes.NameIdentifier);
-        //        if (string.IsNullOrWhiteSpace(username))
-        //        {
-        //            ctx.HandleResponse();
-        //            ctx.Response.Redirect("/");
-        //            return Task.CompletedTask;
-        //        }
-
-        //        //if (!UserExists(username))
-        //        //{
-        //        //    CreateUser(username);
-        //        //}
-
-        //        return Task.CompletedTask;
-        //    }
-        //};
     });
 
 // Add services to the container.
