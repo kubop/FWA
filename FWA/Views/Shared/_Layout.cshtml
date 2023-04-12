@@ -30,6 +30,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Address" asp-action="Index">Addresses</a>
                         </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <form id="logoutForm" asp-controller="Auth" asp-action="Logout">
+                                    <a class="nav-link text-dark" href="javascript:{}" onclick="document.getElementById('logoutForm').submit();">Sign out</a>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Auth" asp-action="Login">Sign In</a></li>
+                        }
                     </ul>
                 </div>
             </div>

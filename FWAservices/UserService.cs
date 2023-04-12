@@ -22,6 +22,11 @@ public class UserService
         return _business.Get<UserBusiness>().GetObject(userId, scope as IScope);
     }
 
+    public User? GetObjectByName(string username, IGenericScope scope = null)
+    {
+        return _business.Get<UserBusiness>().GetObjectByName(username, scope as IScope);
+    }
+
     public IList<User> GetUsers(IGenericScope scope = null)
     {
         return _business.Get<UserBusiness>().ListUsers();

@@ -16,5 +16,15 @@ namespace FWAdata.Business
 				return s.Db.From<User>().SelectAll().ToList();
 			});
 		}
+
+		public User? GetObjectByName(string username, IScope scope = null)
+		{
+			return Execute((IScope s) =>
+			{
+				return s.Db.From<User>()
+					.Where((user) => user.Login == username)
+					.SelectAll().ToList().FirstOrDefault();
+			}, scope);
+		}
 	}
 }
