@@ -5,6 +5,7 @@ using System.Text;
 using Yamo;
 using Microsoft.Data.SqlClient;
 using FWAcore.Model;
+using System.Data.Common;
 
 namespace FWAdata.DbAccess;
 
@@ -37,5 +38,11 @@ public partial class DbContext : Yamo.DbContext
         var conn = new SqlConnection(_connectionString);
         conn.Open();
         return conn;
+    }
+
+    // Breakpoint here to see generated SQL statements
+    protected override void OnCommandExecuting(DbCommand command)
+    {
+        base.OnCommandExecuting(command);
     }
 }

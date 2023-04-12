@@ -15,7 +15,7 @@ namespace FWAweb.Controllers
             _userService = userService;
             _addressService = addressService;
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             var users = _userService.ListForGrid();
             return View(users);
