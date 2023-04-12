@@ -4,16 +4,33 @@
     ViewData["Title"] = "Users";
 }
 
+@functions {
+    string GetOrderBy(string columnName)
+    {
+        if (ViewBag.OrderBy == columnName)
+        {
+            return columnName + "_DESC";
+        }
+        else if (ViewBag.OrderBy == columnName + "_DESC")
+        {
+            return "";
+        } else
+        {
+            return columnName;
+        }
+    }
+}
+
 <div class="text-center">
     <h1 class="display-4">Users</h1>
     <table id="userTable" style="width: 100%;border: 1px solid black;border-collapse: collapse;">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model[0].FirstName)
+                    @Html.ActionLink("First name", "Index", new { orderBy = GetOrderBy("FirstName") })
                 </th>
-                <th>@Html.DisplayNameFor(model => model[0].LastName)</th>
-                <th>@Html.DisplayNameFor(model => model[0].Login)</th>
+                <th>@Html.ActionLink("Last name", "Index", new { orderBy = GetOrderBy("LastName") })</th>
+                <th>@Html.ActionLink("Login", "Index", new { orderBy = GetOrderBy("Login") })</th>
                 <th style="text-align:center;">Address</th>
                 <th>Actions</th>
             </tr>
@@ -46,8 +63,10 @@
     </table>
 </div>
 
+<!--
 <script>
     $(document).ready(function () {
         $('#userTable').DataTable();
     });
 </script>
+-->

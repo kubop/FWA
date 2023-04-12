@@ -32,9 +32,9 @@ public class UserService
         return _business.Get<UserBusiness>().ListUsers();
     }
 
-    public IList<UserView> ListForGrid(IGenericScope scope = null)
+    public IList<UserView> ListForGrid(string? orderBy, IGenericScope scope = null)
     {
-        return _business.Get<UserViewBusiness>().ListForGrid();
+        return _business.Get<UserViewBusiness>().ListForGrid(orderBy);
     }
 
     public void SoftDelete(User user, IGenericScope scope = null)

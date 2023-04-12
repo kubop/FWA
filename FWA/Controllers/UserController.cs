@@ -15,9 +15,11 @@ namespace FWAweb.Controllers
             _userService = userService;
             _addressService = addressService;
         }
-        public IActionResult Index()
+
+        public IActionResult Index(string? orderBy)
         {
-            var users = _userService.ListForGrid();
+            ViewBag.OrderBy = orderBy;
+            var users = _userService.ListForGrid(orderBy);
             return View(users);
         }
 
